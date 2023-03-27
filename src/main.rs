@@ -1,4 +1,9 @@
+mod nine_nine;
+mod calc;
+
 use std::str::Lines;
+
+use num::complex::Complex;
 
 static REGIONS: [&str; 3] = ["Grüß Gott!", "世界，你好", "World, hello"];
 
@@ -129,6 +134,58 @@ fn var_shadowing() {
     println!("{}", spaces);
 }
 
+fn var_add() {
+    // assert!(0.1 + 0.2 == 0.3);
+}
+
+fn for_loop() {
+    for i in 1..5 {
+        println!("i:{}", i);
+    }
+}
+
+fn for_loop2() {
+    for j in 1..=5 {
+        println!("j:{}", j);
+    }
+}
+
+fn complex_calc() {
+    let a = Complex { re: 2.1, im: -1.2 };
+    let b = Complex::new(11.1, 22.2);
+    let result = a + b;
+
+    println!("{} + {}i", result.re, result.im);
+}
+
+fn mem_size() {
+    let x = '中';
+    println!("字符'中'占用了{}字节的内存大小", std::mem::size_of_val(&x));
+}
+
+fn add_with_extra(x: i32, y: i32) -> i32 {
+    let x = x + 1;
+    let y: i32 = y + 1;
+    x + y
+}
+
+fn express() {
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("The value of y is: {}", y);
+}
+
+fn cli_enter() {
+    let mut args = std::env::args().skip(1);
+    let action = args.next().expect("Please specify an action");
+    let item = args.next().expect("Please specify an item");
+
+    println!("{:?}, {:?}", action, item);
+}
+
 fn main() {
     println!("Hello, world!");
     greet_world();
@@ -138,4 +195,12 @@ fn main() {
     var_assignment();
     var_shadowing();
     var_type_parse();
+    var_add();
+    for_loop();
+    for_loop2();
+    complex_calc();
+    mem_size();
+    add_with_extra(3, 2);
+    express();
+    // cli_enter();
 }
