@@ -1,5 +1,6 @@
-mod nine_nine;
-mod calc;
+// mod nine_nine;
+// mod calc;
+// mod revert_string;
 
 use std::str::Lines;
 
@@ -178,6 +179,8 @@ fn express() {
     println!("The value of y is: {}", y);
 }
 
+
+#[allow(dead_code)]
 fn cli_enter() {
     let mut args = std::env::args().skip(1);
     let action = args.next().expect("Please specify an action");
